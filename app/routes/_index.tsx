@@ -2,6 +2,7 @@ import { useFetcher } from "@remix-run/react";
 import { json } from "@remix-run/node";
 import type { MetaFunction, ActionFunctionArgs } from "@remix-run/node";
 import imgNotification from "~/assets/images/notification.jpg";
+import SvgSpinner from "~/ui/primitives/svg-spinner";
 
 export const meta: MetaFunction = () => {
   return [{ title: "New Remix App" }, { name: "description", content: "Welcome to Remix!" }];
@@ -61,7 +62,7 @@ export default function Index() {
               <button
                 className="px-5 py-3 text-xs rounded md text-zinc-800 bg-lime-500 hover:bg-lime-700 hover:text-white duration-500"
                 disabled={isPosting}>
-                {isPosting ? "..." : "Subscribe"}
+                {!isPosting ? "Subscribe" : <SvgSpinner />}
               </button>
             </fetcher.Form>
           )}
